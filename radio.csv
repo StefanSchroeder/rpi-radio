@@ -1,0 +1,6 @@
+"N D R info", -playlist http://www.ndr.de/resources/metadaten/audio/m3u/low/ndrinfo_nds.m3u
+"De LF", -playlist http://www.deutschlandradio.de/streaming/dlf_lq_mp3.m3u 
+"NDR zwei", -playlist http://www.ndr.de/resources/metadaten/audio/m3u/low/ndr2_nds.m3u 
+"NDR culture", -playlist http://www.ndr.de/resources/metadaten/audio/m3u/low/ndrkultur.m3u 
+"VDR funf", http://wdr-wdr5-live.icecast.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3
+"Kee Raka", http://wdr-kiraka-live.icecast.wdr.de/wdr/kiraka/live/mp3/128/stream.mp3

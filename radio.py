@@ -17,7 +17,8 @@ json_string = """
 { 
     "radio": [ 
         "mplayer -playlist http://www.ndr.de/resources/metadaten/audio/m3u/ndrinfo.m3u", 
-        "mplayer https://st01.dlf.de/dlf/01/128/mp3/stream.mp3"
+        "mplayer https://st01.dlf.de/dlf/01/128/mp3/stream.mp3",
+        "mplayer https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3"
     ],
     "amixer": "Master",
     "current": 0,
@@ -43,7 +44,7 @@ def applyVolume(volume):
     data["volume"] = clamp(volume)
     subprocess.Popen(shlex.split("amixer sset '"+data["amixer"]+"' "+str(data["volume"])+"%"))
 
-def SetRadioChannel(chan):
+def SetRadioChannel():
     os.system("pkill mplayer");
     chan = data["current"]
     args = shlex.split(data["radio"][chan]+" &")
@@ -60,7 +61,7 @@ def SetRadioChannelUp():
     SetRadioChannel()
     
 def SetRadioChannelDown():
-    current_channel = ( current_channel - 1 + len(data["radio"])) % len(data["radio"])
+    data["current"] = ( data["current"] - 1 + len(data["radio"])) % len(data["radio"])
     SetRadioChannel()
 
 def cleanup():
@@ -72,7 +73,7 @@ def cleanup():
     sys.exit()
 
 def main():
-    SetRadioChannel(data["current"])
+    SetRadioChannelIndex(data["current"])
 
     damn = curses.initscr()
     damn.nodelay(1)
@@ -95,5 +96,5 @@ def main():
         if c == 49: # '1'
             SetRadioChannelIndex(1)
 
-main()
+wrapper(main())
 

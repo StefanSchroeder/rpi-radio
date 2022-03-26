@@ -119,7 +119,7 @@ def main():
         file = open("LastChannel.txt","r")
         CurChannel = int(file.read())
         file.close()
-    except:        
+    except:
         CurChannel=0
 
         SetRadioChannel(0)
